@@ -1,0 +1,224 @@
+\documentclass[12pt]{article}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{alltt}
+\usepackage{array}	
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{amssymb,amsmath, amsthm}
+\usepackage{qtree}
+\usepackage{hyperref}
+\usepackage{oz}
+\usepackage[cc]{titlepic}
+\usepackage{fancyvrb}
+\usepackage{epstopdf}
+\usepackage{soul}
+\graphicspath{ {./figures/} }
+
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+
+\title{Concordia University\\
+Department of Computer Science and Software Engineering\\
+\textbf{SOEN 331 - S\\Formal Methods for Software Engineering}\\
+\ \\
+\textbf{Assignment 1: Fundamentals}}
+\author{\textbf{Witnick-Hans Joseph}\\
+		\texttt{ID: 29348743}\\
+		\textbf{Alexandra Zana}\\
+		\texttt{ID: 123}\\
+		\textbf{Alexandre Eid}\\
+		\texttt{ID: 456}
+\ \\}
+\date{October 14, 2021.}
+
+\begin{spacing}{1.5}
+\begin{document}
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{General information}
+
+\noindent \textbf{Date posted}: Thursday 30 September, 2021.\\
+\noindent \textbf{Date due}: Thursday, 14 October, 2021, by 23:59.\\
+\noindent \textbf{Weight}: 15\% of the overall grade.
+
+\section{Introduction}
+You should form a team of \textbf{three} members. Each team should designate a leader who will submit the assignment electronically. In case you cannot find a team, please contact me and I will assign you to one. There are \textbf{7} problems in this assignment, with a total weight of \textbf{100} points. You must prepare all your solutions in~\LaTeX~and produce a single \texttt{pdf} file. Name the file after the Concordia id of the person who will submit, e.g. \texttt{123456.pdf}.\\
+
+\section{Ground rules}
+
+This is an assessment exercise.  You may not seek any assistance while expecting to receive credit. \textbf{You must work strictly within your team and seek no assistance for this assignment ((e.g. from the teaching assistants, fellow classmates and other teams or external help)}. Please note that you should \textbf{not} discuss the assignment during tutorials. I am available to discuss clarifications in case you need any.\\
+
+\noindent \textbf{All team members are expected to work relatively equally on each problem}. The team leader has the responsibility to ensure that the team does not violate this rule. \textbf{In your submission, you must include only the names of those team members who contributed to the assignment.} Accommodating someone who did not contribute will result in a penalty.\\
+
+\noindent If there is any problem in the team (such as lack of contribution, etc.), the team leader must contact the instructor as soon as the problem appears.
+
+\newpage
+
+\section{Problems}
+
+\subsection{Propositional logic (10 pts)}
+
+\noindent You are shown a set of four cards placed on a table, each of which has a \textbf{letter} on one side and a \textbf{symbol} on the other side. The visible faces of the cards show the letters \textbf{L} and \textbf{A}, and the symbols \textbf{$\Box$}, and \textbf{$\diamondsuit$}.\\
+
+\noindent Which card(s) must you turn over in order to test the truth of the proposition that \textit{``If a card has a consonant on one side, then it has the symbol $\diamondsuit$ on the other side''}? Explain your reasoning \underline{in detail} by deciding for \underline{each} card whether it should be turned over and why. In your answers, apply any and all appropriate validating or non-validating patterns where applicable.\\
+
+
+\subsubsection{Propositional logic answer}
+
+\noindent We have two statements:
+
+\indent S1: The card has a consonant
+
+\indent S2: The symbol is \textbf{$\diamondsuit$}
+
+$ S1 \rightarrow S2$
+
+\noindent Card \textbf{$\diamondsuit$}: Implication does not necessarily entail causation. So even if the card is a \textbf{$\diamondsuit$} the othe side value could be L or A. It is not the card to turn.
+
+\noindent Card \textbf{$\square$}: This card does not satisfy the second statement that the card is a \textbf{$\diamondsuit$}. So we cannot evaluate the second statement. It is not the card to turn.
+
+\noindent Card A: Since this card is a vowel, it will not help in satisfying the proposition of S1. It is not the card to turn.
+
+\noindent Card L: This card will help answer the question because it satisfy the premise that the card has a consonant. We can check the back to validate S2. This should be the card to turn.
+
+\newpage
+
+\subsection{Predicate logic 1 (10 pts)}
+
+In the domain of all people, consider the predicate \textit{disclosed(a, b)} that is interpreted as \textit{``a has disclosed a secret to  b.''}
+\begin{enumerate}
+\item How are the following two expressions translated into plain English? Are the two expressions logically equivalen $\forall a \exists b~asks(a, b)$, and $\exists b \forall a ~asks(a, b)$.
+\begin{itemize}
+	\item $\forall a \exists b~disclosed(a, b)$.
+	\item $\exists b \forall a ~disclosed(a, b)$.
+\end{itemize} 
+\item Can we claim that $\forall a \exists b~disclosed(a, b) \rightarrow \exists b \forall a ~disclosed(a, b)$? Discuss in detail.
+\item Can we claim that $\exists b \forall a ~disclosed(a, b) \rightarrow \forall a \exists b~disclosed(a, b)$? Discuss in detail.
+\end{enumerate}
+
+\subsubsection{Problem 2 answer}
+\begin{enumerate}
+\item translation
+	\subitem $\forall a \exists b~disclosed(a, b)$: For all $a$, there exist a $b$ such that $a$ has asked $b$ out on a date. 
+	\subitem $\exists b \forall a ~disclosed(a, b)$: There exists a $b$ such that all $a$ asked $b$ out on a date.
+\item Can we claim that $\forall a \exists b~disclosed(a, b) \rightarrow \exists b \forall a ~disclosed(a, b)$? Discuss in detail.
+	\subitem  
+\item Can we claim that $\exists b \forall a ~disclosed(a, b) \rightarrow \forall a \exists b~disclosed(a, b)$? Discuss in detail.
+\end{enumerate} 
+
+
+\newpage
+
+\subsection{Predicate logic 2 (10 pts)}
+
+\noindent Consider the subject ``x is a person'' and the predicate ``x is a mortal'', together with the following list of categorical propositions:
+\begin{itemize}
+\item ``No person is immortal.''
+
+\item ``All people is immortal.''
+
+\item ``Some people are mortal.''	
+
+\item ``Some people are not mortal.''	
+\end{itemize} 
+
+
+\begin{enumerate}
+\item  ``Identify each categorical statement with its name (i.e. letter description)''.
+\subitem answer: 
+
+\item ``Identify universal statements.''
+\subitem answer:  
+
+\item ``Identify particular statements.''
+\subitem answer:  
+
+\item ``Identify affirmative statements''
+\subitem answer: 
+
+\item ``Some scientists are honest.''
+\subitem answer:
+
+\item ``Identify negative statements.''
+\subitem answer: 
+
+\item ``Identify statements with opposite truth values''
+\subitem answer:  
+
+\item ``Identify statements that cannot both be true, but could both be false.''
+\subitem answer:  
+
+\item ``Identify statements that cannot both be false but could both be true.''
+\subitem answer:  
+
+\item ``Identify pairs of super-subaltern statements.''
+\subitem answer:  
+
+\end{enumerate}
+
+\noindent Identify pairs that are contradictories, contraries, subcontraries, and pairs that support subalteration (clearly indicating superaltern and subaltern).\\
+\indent answer: 
+
+\indent contradictories: (1, 5), (2 ,5), (3, 8), (6, 8)
+
+\indent contraries: (1, 3), (2, 3), (1, 6), (2, 6)
+
+\indent subcontraries: (4, 5), (4, 7), (5, 8), (7, 8)
+
+\indent subalteration - superaltern: (1, 4), (2, 4), (3, 5), (3, 7), (1, 8), (2, 8)
+
+\indent subalteration - subaltern: (4, 1), (4, 2), (5, 3), (7, 3), (8, 1), (8, 2)
+
+
+\newpage
+
+\subsection{Ordered structures (10 pts)}
+
+Consider a list $\Lambda = \langle w, x, y, z \rangle$, deployed to implement a stack Abstract Data Type.
+
+\begin{enumerate}
+
+\item Let the head of $\Lambda$ correspond to the topmost position of the Stack. Implement the body of operations \texttt{push(el, $\Lambda$)} and \texttt{pop($\Lambda$)} (let return element be held in variable topmost) using list construction operations. In both cases a)  we assume that appropriate preconditions exist, and b) we can refer to $\Lambda'$ as the state of the list upon successful termination of one of its operations.
+
+\noindent answer: 
+
+\indent \texttt{push(el, $\Lambda$)}  can be written as $\Lambda' = concat( list(el), list(\Lambda)) = \langle el, w, x, y, z \rangle$.
+
+
+\indent \texttt{pop($\Lambda$)}  can be written as $head(\Lambda) = element = w$ and $\Lambda' = tail(\Lambda) = \langle x, y, z \rangle$,
+
+\item  Let the last element of $\Lambda$ correspond to the topmost position of the Stack. Implement the body of both operations as above. When applicable, use control flow statements in your answer.
+
+\end{enumerate}
+
+\newpage
+
+\subsection{Unordered structures and type declarations (10 pts)}
+
+\newpage
+
+\subsection{Relational calculus 1 (25 pts)}
+
+\newpage
+
+\subsection{Relational calculus 2 (25 pts)}
+
+\newpage
+
+\section{What to submit}
+
+\noindent Please submit your \texttt{pdf} file at the Electronic Assignment Submission portal
+
+\centerline{(\url{https://fis.encs.concordia.ca/eas}) }
+
+\noindent under \textbf{Theory Assignment 1}.
+
+\end{spacing}
+
+\end{document}
