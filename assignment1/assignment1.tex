@@ -29,7 +29,7 @@ Department of Computer Science and Software Engineering\\
 		\textbf{Alexandra Zana}\\
 		\texttt{ID: 123}\\
 		\textbf{Alexandre Eid}\\
-		\texttt{ID: 456}
+		\texttt{ID: 40155833}
 \ \\}
 \date{October 14, 2021.}
 
@@ -175,7 +175,7 @@ Consider a list $\Lambda = \langle w, x, y, z \rangle$, deployed to implement a 
 
 \noindent answer: 
 
-\indent \texttt{push(el, $\Lambda$)}  can be written as $\Lambda' = concat( list(el), list(\Lambda)) = \langle el, w, x, y, z \rangle$.
+\indent \texttt{push(el, $\Lambda$)}  can be written as $\Lambda' = cons( el, \Lambda) = \langle el, w, x, y, z \rangle$.
 
 
 \indent \texttt{pop($\Lambda$)}  can be written as $head(\Lambda) = element = w$ and $\Lambda' = tail(\Lambda) = \langle x, y, z \rangle$,
@@ -195,6 +195,84 @@ Consider a list $\Lambda = \langle w, x, y, z \rangle$, deployed to implement a 
 \newpage
 
 \subsection{Relational calculus 2 (25 pts)}
+
+\begin{enumerate}
+	\item Given the above Relation,
+
+	\indent a) Domain: Model
+	
+	\indent b) Range: Brand
+	
+	\item Given the following expression:
+	
+	\indent	\{galaxyA01, galaxyJ2Core, redmi8\} $\vartriangleleft$ cellphones
+	
+	\indent a) $\vartriangleleft$ is a domain restriction, it selects pairs according to the first element
+	
+	\indent b) 
+
+	\indent \{galaxyA01, galaxyJ2Core, redmi8\} $\vartriangleleft$ cellphones = \{
+	\newline	 galaxyA01 $\mapsto$ samsung,
+	\newline	 galaxyJ2Core $\mapsto$ samsung,
+	\newline	 redmi8 $\mapsto$ xiaomi	
+	\newline \}
+	
+	\indent c) This operator is used in database queries
+
+	\item Given the following expression:
+	
+	\item Given the following expression:
+	
+	\indent \{mate10pro, iphoneSE, galaxyJ2Core\} \ooalign{$\vartriangleleft$\cr\hidewidth\scalebox{1}[1]{$-$}\hidewidth\cr} cellphones
+
+	\indent a) \ooalign{$\vartriangleleft$\cr\hidewidth\scalebox{1}[1]{$-$}\hidewidth\cr} is a domain subtraction, it removes all specified element from the domain of the definition
+
+	\indent b)
+
+	\indent cellphones' = \{mate10pro, iphoneSE, galaxyJ2Core\} \ooalign{$\vartriangleleft$\cr\hidewidth\scalebox{1}[1]{$-$}\hidewidth\cr} cellphones = \{
+	\newline	galaxyA21s $\mapsto$ samsung
+	\newline	mate10 $\mapsto$ huawei
+	\newline	galaxyA01 $\mapsto$ samsung
+	\newline	iphone12ProMax $\mapsto$ apple
+	\newline	redmi6A $\mapsto$ xiaomi
+	\newline	redmi8 $\mapsto$ xiaomi
+	\newline \}
+
+	\indent c) This operator would be deployed when we want to delete elements from the database.
+	
+	\item Given the following expression:
+	
+	\item Given the following expression:
+	
+	\indent cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\}
+
+	\indent a) $\bigoplus$ is a relational overide
+
+	\indent b)
+
+	\indent cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\} = \{
+	\newline 	galaxyA21s $\mapsto$ samsung
+	\newline	mate10 $\mapsto$ huawei
+	\newline	mate10pro $\mapsto$ huawei
+	\newline	galaxyA01 $\mapsto$ samsung
+	\newline	iphone12ProMax $\mapsto$ apple
+	\newline	iphoneSE $\mapsto$ apple
+	\newline	galaxyJ2Core $\mapsto$ samsung
+	\newline	redmi6A $\mapsto$ xiaomi
+	\newline	redmi8 $\mapsto$ xiaomi
+	\newline	galaxyA51 $\mapsto$ samsung
+	\newline	mate9 $\mapsto$ huawei
+	\newline \}
+
+	\indent c) This operator would be used in the event that we want to add or modify elements in the database.
+
+	\indent d) The expression doesn't have a permanent effect. If we want to have a permanent effect, we would need to have an assignment operation as such:
+
+	\indent cellphones' = cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\}
+
+	\indent We need to assign the value of the expression to cellphone to have permanent effect.
+
+\end{enumerate}
 
 \newpage
 
