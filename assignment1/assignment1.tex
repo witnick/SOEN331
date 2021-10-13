@@ -27,7 +27,7 @@ Department of Computer Science and Software Engineering\\
 \author{\textbf{Witnick-Hans Joseph}\\
 		\texttt{ID: 29348743}\\
 		\textbf{Alexandra Zana}\\
-		\texttt{ID: 123}\\
+		\texttt{ID: 40131077}\\
 		\textbf{Alexandre Eid}\\
 		\texttt{ID: 40155833}
 \ \\}
@@ -191,87 +191,137 @@ Consider a list $\Lambda = \langle w, x, y, z \rangle$, deployed to implement a 
 \newpage
 
 \subsection{Relational calculus 1 (25 pts)}
+Consider a system that assigns id’s to locations. An id may represent a vehicle in a parking
+lot, a train in a station, a process in an operating system etc. A location may represent a
+parking spot, a train station platform, a core in a hardware system etc. The requirements
+of the system are as follows:
+\begin{enumerate}
+	\item Id’s are unique.
+	\item An id is assigned to a single location (and maybe re-assigned subsequently).
+	\item No multiple id’s may be assigned to the same location.
+\end{enumerate}
+The model of the system is captured by a relation assignment, which is represented as a set
+as shown below:
+\[
+assignment = \\
+\{ \\
+\hspace{10mm} 001 \mapsto A,\\
+\hspace{10mm} 002 \mapsto B,\\
+\hspace{10mm} 003 \mapsto C\\
+\}
+\]
 
+\begin{enumerate}
+	\item Define the precondition to operation add, that assigns a new id to a location.
+	\item Provide two alternative definitions for the main functionality of the operation.
+	\item What would be the result of calling the operation with id? = 001, and location? = D?
+	\item Let us get rid of the precondition. What would be the result of calling add with\\ id? = 004, and location? = C? Would you accept or reject the call? If accepted then the pair should be added to the relation. If rejected, it should not be added to the relation.
+	\item Assume that in the absence of a precondition, we attempted to call operation add with some input parameters id? and location?. Under what conditions, if any, would this be acceptable?
+	\item Consider operation reassign that modifies the location of an existing id. Define the precondition to operation reassign.
+	\item Define the body of operation reassign.
+\end{enumerate}
 \newpage
 
 \subsection{Relational calculus 2 (25 pts)}
+Consider the following relation:
 
+\[ cellphones : Model \leftrightarrow Brand \]
+
+\noindent where
+
+\[
+cellphones = \\
+\{ \\
+\hspace{10mm} galaxyA21s \mapsto samsung,\\
+\hspace{10mm} mate10 \mapsto huawei,\\
+\hspace{10mm} mate10pro \mapsto huawei,\\
+\hspace{10mm} galaxyA01 \mapsto samsung,\\
+\hspace{10mm} iPhone12ProMax \mapsto apple,\\
+\hspace{10mm} iPhoneSE \mapsto apple,\\
+\hspace{10mm} galaxyJ \mapsto samsung\\
+\hspace{10mm} redmi6A \mapsto xiaomi\\
+\hspace{10mm} redmi8 \mapsto xiaomi\\
+\}
+\]
 \begin{enumerate}
-	\item Given the above Relation,
+	\item Given the above relation,
+	\begin{enumerate}
+		\item Define the domain of cellphones.\\
+		answer: \\
+		\indent domain cellphones = Model = \{galaxyA21s, mate10, mate10pro, galaxyA01, iPhone12ProMax, iPhoneSE 7, galaxyJ 2Core 7, redmi6A, redmi8 7\}		
+		\item Define the range of cellphones.\\
+		answer: range cellphones = Brand = {samsung, huawei, apple, xiaomi}
+	\end{enumerate}
 
-	\indent a) Domain: Model
-	
-	\indent b) Range: Brand
-	
-	\item Given the following expression:
-	
-	\indent	\{galaxyA01, galaxyJ2Core, redmi8\} $\vartriangleleft$ cellphones
-	
-	\indent a) $\vartriangleleft$ is a domain restriction, it selects pairs according to the first element
-	
-	\indent b) 
+	\item Given the following the expression:\\ \{galaxyA01, galaxyJ 2Core, redmi8\} $\lhd$ cellphones
+	\begin{enumerate}
+		\item What is the meaning of operator $\lhd$? \\
+			answer: $\vartriangleleft$ is a domain restriction, it selects pairs according to the first element
+		\item What is the value of the expression?	\\
+		\indent answer:
+		\indent \{galaxyA01, galaxyJ2Core, redmi8\} $\vartriangleleft$ cellphones = \{
+		\newline	 galaxyA01 $\mapsto$ samsung,
+		\newline	 galaxyJ2Core $\mapsto$ samsung,
+		\newline	 redmi8 $\mapsto$ xiaomi	
+		\newline \}
+		\item Where would you deploy the operator $\lhd$ in the context of a database management system?\\
+		answer: This operator is used in database queries
+	\end{enumerate}
 
-	\indent \{galaxyA01, galaxyJ2Core, redmi8\} $\vartriangleleft$ cellphones = \{
-	\newline	 galaxyA01 $\mapsto$ samsung,
-	\newline	 galaxyJ2Core $\mapsto$ samsung,
-	\newline	 redmi8 $\mapsto$ xiaomi	
-	\newline \}
-	
-	\indent c) This operator is used in database queries
+	\item Given the following the expression:\\ cellphones $\rhd$ \{samsung, xiaomi\}
+	\begin{enumerate} 
+		\item What is the meaning of operator $\rhd$? \\
+		answer: 
+		\item What is the value of the expression?	
+		\item Where would you deploy such operator in the context of a database management system?
+	\end{enumerate}
 
-	\item Given the following expression:
-	
-	\item Given the following expression:
-	
-	\indent \{mate10pro, iphoneSE, galaxyJ2Core\} \ooalign{$\vartriangleleft$\cr\hidewidth\scalebox{1}[1]{$-$}\hidewidth\cr} cellphones
+	\item Given the following the expression:\\ \{mate10pro, iPhoneSE, galaxyJ 2Core\} $\ndres$ cellphones 
+	\begin{enumerate} 
+		\item What is the meaning of operator $\ndres$? answer: 
+		\item What is the value of the expression?	
+		\item Where would you deploy such operator in the context of a database management system?
+	\end{enumerate}
 
-	\indent a) \ooalign{$\vartriangleleft$\cr\hidewidth\scalebox{1}[1]{$-$}\hidewidth\cr} is a domain subtraction, it removes all specified element from the domain of the definition
+	\item Given the following the expression:\\ cellphones $\nrres$ \{apple, xiaomi\}
+	\begin{enumerate} 
+		\item What is the meaning of operator $\nrres$? answer: 
+		\item What is the value of the expression?	
+		\item Where would you deploy such operator in the context of a database management system?
+	\end{enumerate}
 
-	\indent b)
+	\item Given the following the expression:\\ cellphones $\oplus$ \{galaxyA51 7→ samsung, mate9 7→ huawei\}
+	\begin{enumerate} 
+		\item What is the meaning of operator $\oplus$? 
+		\indent answer: \\
+		\indent $\bigoplus$ is a relational overide
 
-	\indent cellphones' = \{mate10pro, iphoneSE, galaxyJ2Core\} \ooalign{$\vartriangleleft$\cr\hidewidth\scalebox{1}[1]{$-$}\hidewidth\cr} cellphones = \{
-	\newline	galaxyA21s $\mapsto$ samsung
-	\newline	mate10 $\mapsto$ huawei
-	\newline	galaxyA01 $\mapsto$ samsung
-	\newline	iphone12ProMax $\mapsto$ apple
-	\newline	redmi6A $\mapsto$ xiaomi
-	\newline	redmi8 $\mapsto$ xiaomi
-	\newline \}
+		\item What is the value of the expression?	\\
+		\indent cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\} = \{
+		\newline  	galaxyA21s $\mapsto$ samsung
+		\newline	mate10 $\mapsto$ huawei
+		\newline	mate10pro $\mapsto$ huawei
+		\newline	galaxyA01 $\mapsto$ samsung
+		\newline	iphone12ProMax $\mapsto$ apple
+		\newline	iphoneSE $\mapsto$ apple
+		\newline	galaxyJ2Core $\mapsto$ samsung
+		\newline	redmi6A $\mapsto$ xiaomi
+		\newline	redmi8 $\mapsto$ xiaomi
+		\newline	galaxyA51 $\mapsto$ samsung
+		\newline	mate9 $\mapsto$ huawei
+		\newline \}
 
-	\indent c) This operator would be deployed when we want to delete elements from the database.
-	
-	\item Given the following expression:
-	
-	\item Given the following expression:
-	
-	\indent cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\}
+		\item Where would you deploy such operator in the context of a database management system?\\
+		\indent answer: \\
+		\indent This operator would be used in the event that we want to add or modify elements in the database.
 
-	\indent a) $\bigoplus$ is a relational overide
-
-	\indent b)
-
-	\indent cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\} = \{
-	\newline 	galaxyA21s $\mapsto$ samsung
-	\newline	mate10 $\mapsto$ huawei
-	\newline	mate10pro $\mapsto$ huawei
-	\newline	galaxyA01 $\mapsto$ samsung
-	\newline	iphone12ProMax $\mapsto$ apple
-	\newline	iphoneSE $\mapsto$ apple
-	\newline	galaxyJ2Core $\mapsto$ samsung
-	\newline	redmi6A $\mapsto$ xiaomi
-	\newline	redmi8 $\mapsto$ xiaomi
-	\newline	galaxyA51 $\mapsto$ samsung
-	\newline	mate9 $\mapsto$ huawei
-	\newline \}
-
-	\indent c) This operator would be used in the event that we want to add or modify elements in the database.
-
-	\indent d) The expression doesn't have a permanent effect. If we want to have a permanent effect, we would need to have an assignment operation as such:
-
-	\indent cellphones' = cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\}
-
-	\indent We need to assign the value of the expression to cellphone to have permanent effect.
-
+		\item  Does the result of the expression have a permanent effect on the database (relation)? If not, describe in detail how would you ensure that such operation would have a permanent effect.\\
+		\indent answer:\\
+		\indent The expression doesn't have a permanent effect. If we want to have a permanent effect, we would need to have an assignment operation as such:\\
+		\indent cellphones' = cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\}\\
+		\indent We need to assign the value of the expression to cellphone to have permanent effect.\\
+		
+	\end{enumerate}
 \end{enumerate}
 
 \newpage
