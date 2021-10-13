@@ -278,9 +278,23 @@ cellphones = \\
 
 	\item Given the following the expression:\\ \{mate10pro, iPhoneSE, galaxyJ 2Core\} $\ndres$ cellphones 
 	\begin{enumerate} 
-		\item What is the meaning of operator $\ndres$? answer: 
-		\item What is the value of the expression?	
-		\item Where would you deploy such operator in the context of a database management system?
+		\item What is the meaning of operator $\ndres$?\\
+		answer:\\ 
+		It is a domain subtraction, it removes all specified element from the domain of the definition
+		\item What is the value of the expression?	\\
+		answer:\\
+
+		\indent cellphones' = \{mate10pro, iphoneSE, galaxyJ2Core\}  $\ndres$ cellphones = \{
+		\newline	galaxyA21s $\mapsto$ samsung
+		\newline	mate10 $\mapsto$ huawei
+		\newline	galaxyA01 $\mapsto$ samsung
+		\newline	iphone12ProMax $\mapsto$ apple
+		\newline	redmi6A $\mapsto$ xiaomi
+		\newline	redmi8 $\mapsto$ xiaomi
+		\newline \}
+		\item Where would you deploy such operator in the context of a database management system?\\
+		answer:\\
+		This operator would be deployed when we want to delete elements from the database.
 	\end{enumerate}
 
 	\item Given the following the expression:\\ cellphones $\nrres$ \{apple, xiaomi\}
