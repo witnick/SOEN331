@@ -222,15 +222,35 @@ Consider the sets
 Answer the following questions:
 \begin{enumerate}
 	\item How do we interpret the expression Favorite : $\mathbb{P}$Laptop?
+	\subitem answer: 
+	\subitem The variable Favorite can assume any value supported by $\mathbb{P}$Laptop (ie: the var Favorite can be any value of the PowerSet of Laptop)
 	\item Is $\mathbb{P}$Laptop a legitimate type?
+	\subitem answer: 
+	\subitem Yes; Favorite is of type $\mathbb{P}$Laptop. The powerset Laptop is a legitimate type.
 	\item What is the nature of the variable in Favorite : $\mathbb{P}$Laptop? (i.e. Atomic or composite? If composite, what type?)
+	\subitem answer: 
+	\subitem It is a composition. the variabale Favorite: $\mathbb{P}$Laptop is a set of elements, so it is a composition.
 	\item Is Apple $\in \mathbb{P}$Laptop? Explain why or why no
+	\subitem answer:
+	\subitem No; the $\mathbb{P}$Laptop is a list of all possible subsets we can produce from the set Laptop, and the atomic element Apple is not an element of $\mathbb{P}$Laptop.
 	\item Is \{Apple\} $\in \mathbb{P}$Laptop? Explain why or why not.
+	\subitem answer:
+	\subitem Yes; since \{Apple\} is a valid element of the $\mathbb{P}$Laptop set. The list element of any atomic element is within the PowerSet of its type.
 	\item Is \{\{\}\} $\in \mathbb{P}$Laptop?
+	\subitem answer:
+	\subitem No, because list Laptop itself does not contain the empty element \{\}, it's power set can't contain the element \{\{\}\}.
 	\item Is \{\} $\in \mathbb{P}$Laptop? Explain why or why not.
+	\subitem answer:
+	\subitem Yes; since the null/empty element is an element of any power set.
 	\item If we define variable Favorite : $\mathbb{P}$Laptop, is \{\} a legitimate value for variable Favorite? Explain why or why not.
+	\subitem answer:
+	\subitem Yes, because the $\mathbb{P}$Laptop contains the empty list element. Ie, if we remove all the elements contained in Favorite, we will have \{\} set.
 	\item Is Favorite $\in \mathbb{P}$Laptop? Explain.
+	\subitem answer:
+	\subitem Yes; the elements of Favorite are elements in $\mathbb{P}$Laptop, but the variable Favorite itself is not.
 	\item Is Favorite $\subset \mathbb{P}$Laptop? Explain.
+	\subitem answer:
+	\subitem No
 \end{enumerate}
 \newpage
 
@@ -282,8 +302,8 @@ cellphones = \\
 \hspace{10mm} galaxyA01 \mapsto samsung,\\
 \hspace{10mm} iPhone12ProMax \mapsto apple,\\
 \hspace{10mm} iPhoneSE \mapsto apple,\\
-\hspace{10mm} galaxyJ \mapsto samsung\\
-\hspace{10mm} redmi6A \mapsto xiaomi\\
+\hspace{10mm} galaxyJ2Core \mapsto samsung,\\
+\hspace{10mm} redmi6A \mapsto xiaomi,\\
 \hspace{10mm} redmi8 \mapsto xiaomi\\
 \}
 \]
@@ -294,47 +314,58 @@ cellphones = \\
 		answer: \\
 		\indent domain cellphones = Model = \{galaxyA21s, mate10, mate10pro, galaxyA01, iPhone12ProMax, iPhoneSE, galaxyJ2Core, redmi6A, redmi8\}		
 		\item Define the range of cellphones.\\
-		answer: range cellphones = Brand = \{samsung, huawei, apple, xiaomi\}
+		answer: \\
+		range cellphones = Brand = \{samsung, huawei, apple, xiaomi\}
 	\end{enumerate}
 
 	\item Given the following the expression:\\ \{galaxyA01, galaxyJ2Core, redmi8\} $\lhd$ cellphones
 	\begin{enumerate}
 		\item What is the meaning of operator $\lhd$? \\
-			answer: $\vartriangleleft$ is a domain restriction, it selects pairs according to the first element
+			answer: $\vartriangleleft$ is a domain restriction, it selects pairs according to the first element.
 		\item What is the value of the expression?	\\
-		\indent answer:
-		\indent \{galaxyA01, galaxyJ2Core, redmi8\} $\vartriangleleft$ cellphones = \{
-		\newline	 galaxyA01 $\mapsto$ samsung,
-		\newline	 galaxyJ2Core $\mapsto$ samsung,
-		\newline	 redmi8 $\mapsto$ xiaomi	
-		\newline \}
+		\indent answer: \\ 
+		\indent \{galaxyA01, galaxyJ2Core, redmi8\} $\vartriangleleft$ cellphones = \{ \\
+		galaxyA01 $\mapsto$ samsung, \\ 
+		galaxyJ2Core $\mapsto$ samsung, \\
+		redmi8 $\mapsto$ xiaomi \\ 	
+		\}
 		\item Where would you deploy the operator $\lhd$ in the context of a database management system?\\
-		answer: This operator is used in database queries
+		answer: This operator is used to model database queries.
 	\end{enumerate}
 
 	\item Given the following the expression:\\ cellphones $\rhd$ \{samsung, xiaomi\}
 	\begin{enumerate} 
 		\item What is the meaning of operator $\rhd$? \\
 		answer: 
-		\item What is the value of the expression?	
-		\item Where would you deploy such operator in the context of a database management system?
+		$\rhd$ is a range restriction operator; It assignes pairs based on the second element.
+		\item What is the value of the expression?
+		cellphones $\rhd$ \{samsung, xiaomi\} = \\
+		\{ \\
+		galaxyA21s $\mapsto$ samsung, \\
+		galaxyA01 $\mapsto$ samsung, \\
+		galaxyJ2Core $\mapsto$ samsung, \\
+		redmi6A $\mapsto$ xiaomi,\\
+		redmi8 $\mapsto$ xiaomi
+		\item Where would you deploy such operator in the context of a database management system? \\ 
+		answer: \\ 
+		This operator is used to model database queries.
 	\end{enumerate}
 
 	\item Given the following the expression:\\ \{mate10pro, iPhoneSE, galaxyJ2Core\} $\ndres$ cellphones 
 	\begin{enumerate} 
 		\item What is the meaning of operator $\ndres$?\\
 		answer:\\ 
-		It is a domain subtraction, it removes all specified element from the domain of the definition
+		It is a domain subtraction, it removes all specified element from the domain of the relation.
 		\item What is the value of the expression?	\\
 		answer:\\
-		\indent cellphones' = \{mate10pro, iphoneSE, galaxyJ2Core\}  $\ndres$ cellphones = \{
-		\newline	galaxyA21s $\mapsto$ samsung
-		\newline	mate10 $\mapsto$ huawei
-		\newline	galaxyA01 $\mapsto$ samsung
-		\newline	iphone12ProMax $\mapsto$ apple
-		\newline	redmi6A $\mapsto$ xiaomi
-		\newline	redmi8 $\mapsto$ xiaomi
-		\newline \}
+		\indent cellphones' = \{mate10pro, iphoneSE, galaxyJ2Core\}  $\ndres$ cellphones = \{ \\
+		galaxyA21s $\mapsto$ samsung,\\
+		mate10 $\mapsto$ huawei,\\
+		galaxyA01 $\mapsto$ samsung,\\
+		iphone12ProMax $\mapsto$ apple,\\
+		redmi6A $\mapsto$ xiaomi,\\
+		redmi8 $\mapsto$ xiaomi\\
+		\}
 		\item Where would you deploy such operator in the context of a database management system?\\
 		answer:\\
 		This operator would be deployed when we want to delete elements from the database.
@@ -342,31 +373,44 @@ cellphones = \\
 
 	\item Given the following the expression:\\ cellphones $\nrres$ \{apple, xiaomi\}
 	\begin{enumerate} 
-		\item What is the meaning of operator $\nrres$? answer: 
-		\item What is the value of the expression?	
-		\item Where would you deploy such operator in the context of a database management system?
+		\item What is the meaning of operator $\nrres$?\\
+		answer:\\
+		$\nrres$ is a range subtraction operator, it removes all elements from the range of the relation.
+		\item What is the value of the expression?\\
+		answer:\\	
+		cellphones' = cellphones $\nrres$ \{apple, xiaomi\} = \{\\
+		galaxyA21s $\mapsto$ samsung,\\
+		mate10 $\mapsto$ huawei,\\
+		mate10pro $\mapsto$ huawei,\\
+		galaxyA01 $\mapsto$ samsung,\\
+		galaxyJ2Core $\mapsto$ samsung,\\
+		\}
+		\item Where would you deploy such operator in the context of a database management system?\\
+		answer:\\
+		You would use $\nrres$ when wanting to modify the content of a database (deleting element, in the case of $\nrres$).
 	\end{enumerate}
-
+	
 	\item Given the following the expression:\\ cellphones $\oplus$ \{galaxyA51 7→ samsung, mate9 7→ huawei\}
 	\begin{enumerate} 
-		\item What is the meaning of operator $\oplus$? 
+		\item What is the meaning of operator $\oplus$? \\
 		\indent answer: \\
-		\indent $\bigoplus$ is a relational overide
+		\indent $\oplus$ is a relational overide
 
 		\item What is the value of the expression?	\\
-		\indent cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\} = \{
-		\newline  	galaxyA21s $\mapsto$ samsung
-		\newline	mate10 $\mapsto$ huawei
-		\newline	mate10pro $\mapsto$ huawei
-		\newline	galaxyA01 $\mapsto$ samsung
-		\newline	iphone12ProMax $\mapsto$ apple
-		\newline	iphoneSE $\mapsto$ apple
-		\newline	galaxyJ2Core $\mapsto$ samsung
-		\newline	redmi6A $\mapsto$ xiaomi
-		\newline	redmi8 $\mapsto$ xiaomi
-		\newline	galaxyA51 $\mapsto$ samsung
-		\newline	mate9 $\mapsto$ huawei
-		\newline \}
+		answer: \\ 
+		\indent cellphones $\oplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\} = \{ \\ 
+		galaxyA21s $\mapsto$ samsung,\\
+		mate10 $\mapsto$ huawei,\\
+		mate10pro $\mapsto$ huawei,\\
+		galaxyA01 $\mapsto$ samsung,\\
+		iphone12ProMax $\mapsto$ apple,\\
+		iphoneSE $\mapsto$ apple,\\
+		galaxyJ2Core $\mapsto$ samsung,\\
+		redmi6A $\mapsto$ xiaomi,\\
+		redmi8 $\mapsto$ xiaomi,\\
+		galaxyA51 $\mapsto$ samsung,\\
+		mate9 $\mapsto$ huawei,\\
+		\}
 
 		\item Where would you deploy such operator in the context of a database management system?\\
 		\indent answer: \\
@@ -375,7 +419,7 @@ cellphones = \\
 		\item  Does the result of the expression have a permanent effect on the database (relation)? If not, describe in detail how would you ensure that such operation would have a permanent effect.\\
 		\indent answer:\\
 		\indent The expression doesn't have a permanent effect. If we want to have a permanent effect, we would need to have an assignment operation as such:\\
-		\indent cellphones' = cellphones $\bigoplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\}\\
+		\indent cellphones' = cellphones $\oplus$ \{galaxyA51 $\mapsto$ samsung, mate9 $\mapsto$ huawei\}\\
 		\indent We need to assign the value of the expression to cellphone to have permanent effect.\\
 		
 	\end{enumerate}
