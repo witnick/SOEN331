@@ -95,7 +95,7 @@ $ p \rightarrow q$ , $ \neg q \rightarrow \neg p$
 
 In the domain of all people, consider the predicate \textit{disclosed(a, b)} that is interpreted as \textit{``a has disclosed a secret to  b.''}
 \begin{enumerate}
-\item How are the following two expressions translated into plain English? Are the two expressions logically equivalen $\forall a \exists b~asks(a, b)$, and $\exists b \forall a ~asks(a, b)$.
+\item How are the following two expressions translated into plain English? Are the two expressions logically equivalent?
 \begin{itemize}
 	\item $\forall a \exists b~disclosed(a, b)$.
 	\item $\exists b \forall a ~disclosed(a, b)$.
@@ -107,11 +107,27 @@ In the domain of all people, consider the predicate \textit{disclosed(a, b)} tha
 \subsubsection{Problem 2 answer}
 \begin{enumerate}
 \item translation
-	\subitem $\forall a \exists b~disclosed(a, b)$: For all $a$, there exist a $b$ such that $a$ has asked $b$ out on a date. 
-	\subitem $\exists b \forall a ~disclosed(a, b)$: There exists a $b$ such that all $a$ asked $b$ out on a date.
-\item Can we claim that $\forall a \exists b~disclosed(a, b) \rightarrow \exists b \forall a ~disclosed(a, b)$? Discuss in detail.
+	\subitem $\forall a \exists b~disclosed(a, b)$: Everyone has disclosed a secret to someone. 
+	\subitem $\exists b \forall a ~disclosed(a, b)$: There exists someone who has been disclosed a secret by everyone.
+	The two expression are not logically equivalent. Here is a proof by counter example using diagrams. We can see that they are not the same
+	\begin{center}
+	\begin{tabular}{cc}
+		\includegraphics[scale=0.5] {all-a-told-some-b.png}  &
+		\includegraphics[scale=0.5] {some-b-has-been-told-by-all-a}\\
+		$\forall a \exists b~disclosed(a, b)$ &
+		$\exists b \forall a ~disclosed(a, b)$\\
+	\end{tabular}
+	\end{center}
+
+\item We cannot claim that $\forall a \exists b~disclosed(a, b) \rightarrow \exists b \forall a ~disclosed(a, b)$.\\
+	In the first statement, we are saying that everyone has disclosed a secret to someone, and thethe other is saying someone has been told be everyone a secret.\\
+	The first statement implies that the person $b$ might not be the same person for each person $a$. \\
+	The second statement implies that every $a$ has told a secret to the same $b$.
+
 	\subitem  
-\item Can we claim that $\exists b \forall a ~disclosed(a, b) \rightarrow \forall a \exists b~disclosed(a, b)$? Discuss in detail.
+\item Yes, we can claim that $\exists b \forall a ~disclosed(a, b) \rightarrow \forall a \exists b~disclosed(a, b)$.\\
+ if at least one $b$ has been disclosed a secret by all the $a$'s,\\ 
+ then we can safely say that all the $a$ have disclosed a secret to a $b$.
 \end{enumerate} 
 
 
