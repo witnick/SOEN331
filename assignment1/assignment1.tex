@@ -288,12 +288,12 @@ cellphones = \\
 	\begin{enumerate}
 		\item Define the domain of cellphones.\\
 		answer: \\
-		\indent domain cellphones = Model = \{galaxyA21s, mate10, mate10pro, galaxyA01, iPhone12ProMax, iPhoneSE 7, galaxyJ 2Core 7, redmi6A, redmi8 7\}		
+		\indent domain cellphones = Model = \{galaxyA21s, mate10, mate10pro, galaxyA01, iPhone12ProMax, iPhoneSE, galaxyJ2Core, redmi6A, redmi8\}		
 		\item Define the range of cellphones.\\
-		answer: range cellphones = Brand = {samsung, huawei, apple, xiaomi}
+		answer: range cellphones = Brand = \{samsung, huawei, apple, xiaomi\}
 	\end{enumerate}
 
-	\item Given the following the expression:\\ \{galaxyA01, galaxyJ 2Core, redmi8\} $\lhd$ cellphones
+	\item Given the following the expression:\\ \{galaxyA01, galaxyJ2Core, redmi8\} $\lhd$ cellphones
 	\begin{enumerate}
 		\item What is the meaning of operator $\lhd$? \\
 			answer: $\vartriangleleft$ is a domain restriction, it selects pairs according to the first element
@@ -316,14 +316,13 @@ cellphones = \\
 		\item Where would you deploy such operator in the context of a database management system?
 	\end{enumerate}
 
-	\item Given the following the expression:\\ \{mate10pro, iPhoneSE, galaxyJ 2Core\} $\ndres$ cellphones 
+	\item Given the following the expression:\\ \{mate10pro, iPhoneSE, galaxyJ2Core\} $\ndres$ cellphones 
 	\begin{enumerate} 
 		\item What is the meaning of operator $\ndres$?\\
 		answer:\\ 
 		It is a domain subtraction, it removes all specified element from the domain of the definition
 		\item What is the value of the expression?	\\
 		answer:\\
-
 		\indent cellphones' = \{mate10pro, iphoneSE, galaxyJ2Core\}  $\ndres$ cellphones = \{
 		\newline	galaxyA21s $\mapsto$ samsung
 		\newline	mate10 $\mapsto$ huawei
