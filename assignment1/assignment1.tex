@@ -277,12 +277,38 @@ assignment = \\
 
 \begin{enumerate}
 	\item Define the precondition to operation add, that assigns a new id to a location.
-	\item Provide two alternative definitions for the main functionality of the operation.
+	\subitem answer:
+	\subitem id? $ \notin $ dom assignment
+	\subitem location? $ \notin $ range assignment
+	\item Provide two alternative definitions for the main functionality of the operation.	
+	\subitem answer:
+	\[ assignment' = table \cup \{ id? \mapsto location? \} \] 
+	\[ assignment = assignment \oplus  \{ id? \mapsto location? \} \]
 	\item What would be the result of calling the operation with id? = 001, and location? = D?
+	\subitem answer:
+	\[
+	assignment = \\
+	\{ \\
+	\hspace{10mm} 001 \mapsto D,\\
+	\hspace{10mm} 002 \mapsto B,\\
+	\hspace{10mm} 003 \mapsto C\\
+	\}
+	\]
 	\item Let us get rid of the precondition. What would be the result of calling add with\\ id? = 004, and location? = C? Would you accept or reject the call? If accepted then the pair should be added to the relation. If rejected, it should not be added to the relation.
+	\subitem answer:
+	\subitem It would reject the call, as the system does not allow multiple id's to be assigned to the same location
 	\item Assume that in the absence of a precondition, we attempted to call operation add with some input parameters id? and location?. Under what conditions, if any, would this be acceptable?
+	\subitem answer:
+	\subitem This would be acceptable if the id is an existent id. 
+	\subitem In that case we will be overriding and erasing an existing relation.
 	\item Consider operation reassign that modifies the location of an existing id. Define the precondition to operation reassign.
+	\subitem answer:
+	\subitem id? $ \notin $ dom assignment
+	\subitem location? $ \notin $ range assignment
 	\item Define the body of operation reassign.
+	\subitem answer:
+	\[ assignment = assignment \oplus  \{ id? \mapsto location? \} \]
+
 \end{enumerate}
 \newpage
 
