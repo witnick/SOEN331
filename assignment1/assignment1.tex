@@ -194,7 +194,7 @@ In the domain of all people, consider the predicate \textit{disclosed(a, b)} tha
 
 \subsection{Ordered structures (10 pts)}
 
-Consider a list $\Lambda = \langle w, x, y, z \rangle$, deployed to implement a stack Abstract Data Type.
+Consider a list $\Lambda$, deployed to implement a stack Abstract Data Type.
 
 \begin{enumerate}
 
@@ -202,12 +202,31 @@ Consider a list $\Lambda = \langle w, x, y, z \rangle$, deployed to implement a 
 
 \noindent answer: 
 
-\indent \texttt{push(el, $\Lambda$)}  can be written as $\Lambda' = cons( el, \Lambda) = \langle el, w, x, y, z \rangle$.
+\[
+push(el, \Lambda) \{\\
+\hspace{10mm} \Lambda' = cons(el, \Lambda)\\
+\}
+\]
 
-
-\indent \texttt{pop($\Lambda$)}  can be written as $head(\Lambda) = element = w$ and $\Lambda' = tail(\Lambda) = \langle x, y, z \rangle$,
+\[
+pop(\Lambda) \{\\
+\hspace{10mm} topmost = head(\Lambda)\\
+\hspace{10mm} \Lambda' = tail(\Lambda)\\
+\hspace{10mm} return \hspace{1mm} topmost\\ 
+\}
+\]
 
 \item  Let the last element of $\Lambda$ correspond to the topmost position of the Stack. Implement the body of both operations as above. When applicable, use control flow statements in your answer.
+
+\[
+push(el, \Lambda) \{\\
+\hspace{10mm} if(head(\Lambda) == null) \{\\
+\hspace{20mm} \Lambda' = cons(el, \Lambda)\\
+\hspace{10mm}\}  else \{\\
+\hspace{20mm} \Lambda' = concat(\Lambda, list(el))\\
+\hspace{10mm}\}\\
+\}
+\]
 
 \end{enumerate}
 
@@ -250,7 +269,7 @@ Answer the following questions:
 	\subitem Yes; the elements of Favorite are elements in $\mathbb{P}$Laptop, but the variable Favorite itself is not.
 	\item Is Favorite $\subset \mathbb{P}$Laptop? Explain.
 	\subitem answer:
-	\subitem No
+	\subitem No, Favorite is a variable that can assume any value of $\mathbb{P}$Laptop, but is not a subset of the PowerSet.
 \end{enumerate}
 \newpage
 
