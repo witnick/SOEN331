@@ -220,10 +220,32 @@ pop(\Lambda) \{\\
 
 \[
 push(el, \Lambda) \{\\
-\hspace{10mm} if(head(\Lambda) == null) \{\\
+\hspace{10mm} if(head(\Lambda) == \varnothing)) \{\\
 \hspace{20mm} \Lambda' = cons(el, \Lambda)\\
 \hspace{10mm}\}  else \{\\
 \hspace{20mm} \Lambda' = concat(\Lambda, list(el))\\
+\hspace{10mm}\}\\
+\}
+\]
+
+\[
+pop(\Lambda) \{\\
+\hspace{10mm} if(head(\Lambda) == \varnothing))\\
+\hspace{20mm} return \hspace{1mm} \Lambda\\
+\hspace{10mm} if(tail(\Lambda) == \varnothing))\{\\
+\hspace{20mm} topmost = head(\Lambda)\\
+\hspace{20mm} \Lambda' = tail(\Lambda)\\
+\hspace{20mm} return \hspace{1mm} topmost\\ 
+\hspace{10mm}\}  \\
+\hspace{10mm} \alpha  = head(\Lambda)\\
+\hspace{10mm} \beta  = tail(\Lambda)\\
+\hspace{10mm} while(\beta \neq  \varnothing) \{\\
+\hspace{20mm} \alpha = cons(\alpha, head(\beta))\\
+\hspace{20mm} \beta = tail(\beta))\\
+\hspace{10mm}\}  \\
+\hspace{10mm} \Lambda' = \alpha\\
+\hspace{10mm} topmost = head(\beta)\\
+\hspace{10mm} return \hspace{1mm} topmost\\ 
 \hspace{10mm}\}\\
 \}
 \]
