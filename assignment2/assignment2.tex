@@ -1,0 +1,150 @@
+\documentclass[12pt]{article}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{alltt}
+\usepackage{array}	
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{amssymb,amsmath, amsthm}
+\usepackage{qtree}
+\usepackage{hyperref}
+\usepackage{oz}
+\usepackage[cc]{titlepic}
+\usepackage{fancyvrb}
+\usepackage{epstopdf}
+\usepackage{soul}
+\graphicspath{ {./figures/} }
+
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+
+\title{Concordia University\\
+Department of Computer Science and Software Engineering\\
+\textbf{SOEN 331 - S\\Formal Methods for Software Engineering}\\
+\ \\
+\textbf{Assignment 2: \\Z and Object-Z specifications}}
+\author{\textbf{Witnick-Hans Joseph}\\
+		\texttt{ID: 29348743}\\
+		\textbf{Alexandra Zana}\\
+		\texttt{ID: 40131077}\\
+		\textbf{Alexandre Eid}\\
+		\texttt{ID: 40155833}
+\ \\}
+\date{October 28, 2021.}
+
+\begin{spacing}{1.5}
+\begin{document}
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{General information}
+
+\noindent \textbf{Date posted}: Thursday 14 September, 2021.\\
+\noindent \textbf{Date due}: Thursday, 28 October, 2021, by 23:59.\\
+\noindent \textbf{Weight}: 15\% of the overall grade.
+
+\section{Introduction}
+You should form a team of \textbf{three} members. Each team should designate a leader who will submit the assignment electronically. In case you cannot find a team, please contact me and I will assign you to one. There are \textbf{7} problems in this assignment, with a total weight of \textbf{100} points. You must prepare all your solutions in~\LaTeX~and produce a single \texttt{pdf} file. Name the file after the Concordia id of the person who will submit, e.g. \texttt{123456.pdf}.
+
+\section{Ground rules}
+
+This is an assessment exercise.  You may not seek any assistance while expecting to receive credit. \textbf{You must work strictly within your team and seek no assistance for this assignment ((e.g. from the teaching assistants, fellow classmates and other teams or external help)}. Please note that you should \textbf{not} discuss the assignment during tutorials. I am available to discuss clarifications in case you need any.
+
+\noindent \textbf{All team members are expected to work relatively equally on each problem}. The team leader has the responsibility to ensure that the team does not violate this rule. \textbf{In your submission, you must include only the names of those team members who contributed to the assignment.} Accommodating someone who did not contribute will result in a penalty.
+
+\noindent If there is any problem in the team (such as lack of contribution, etc.), the team leader must contact the instructor as soon as the problem appears.
+
+\noindent 
+\newpage
+
+\section{Problems}
+
+\subsection{Part 1 (40 pts): Temperature monitoring system with
+the Z specification}
+
+\noindent Consider a system called ’TempMonitor’ that keeps a number of sensors, where each sensor\\
+is deployed in a separate location in order to read the location’s temperature. Before the\\
+system is deployed, all locations are marked on a map, and each location will be addressed\\
+by a sensor. The formal specification of the system introduces the following three types:
+
+\begin{center}
+	SENSOR TYPE, LOCATION TYPE, TEMPERATURE TYPE
+\end{center} 
+
+\noindent We also introduce an enumerated type MESSAGE which will assume values that correspond\\
+to success and error messages.
+
+\noindent Provide a formal specification in Z, with the following operations:
+\begin{itemize}
+	\item \textbf{DeploySensorOK}: Places a new sensor to a unique location. You may assume that\\
+	some (default) temperature is also passed as an argument.
+	\item \textbf{ReadTemperatureOK}: Obtain the temperature reading from a sensor, given the \\
+	sensor’s location.
+\end{itemize}
+
+\noindent Provide appropriate success and error schemata to be combined with the definitions above\\
+to produce robust specifications for the following interface:
+
+\begin{itemize}
+	\item \textbf{DeploySensor},
+	\item \textbf{ReadTemperature}
+\end{itemize}
+
+\newpage
+
+\subsection{Part 2 (60 pts): A booking system with the Object Z specification}
+
+\noindent We introduce the basic types [Person, SeatType]. We also introduce an enumerated type\\
+Message which will assume values (feel free to define your own) that correspond to success\\
+and error messages. Consider a system to book seats for a theater play. A customer can\\
+book a single seat, and a seat can only accommodate a single customer. The booking system\\
+keeps a log of the customers that have booked a seat. The system publishes a plan of the\\
+theater and it allows customers to access it online and make a booking or cancel a booking.
+
+\subsubsection{Class Booking}
+\noindent Define a formal specification in Object-Z for class Bookingt to support the following operations:
+\begin{itemize}
+	\item \textbf{BookOK}: Reserves a seat for a given customer.
+	\item \textbf{CancelOK}: Frees a seat for a given customer.
+\end{itemize}
+
+\noindent You will also need to provide appropriate success and error schemata to be combined with
+the definitions above to produce robust specifications for the following interface:
+\begin{itemize}
+	\item\textbf{Book}, and
+	\item \textbf{Cancel}.
+\end{itemize}
+
+\subsubsection{Class Booking2}
+\noindent Subclassify Booking to introduce class Booking2 that behaves exactly like Booking, while\\
+introducing the following operations:
+
+\begin{itemize}
+	\item \textbf{GetNumberOfCustomers} returns the total number of customers who have made a booking.
+	\item \textbf{ModifyBookingOK} assigns an existing customer to a different seat. Provide any additional schema(ta) \\
+in order to extend the interface to include a robust operation ModifyBooking.
+\end{itemize}
+
+\noindent The extended interface will now include operations
+\begin{itemize}
+	\item \textbf{GetNumberOfCustomers}, and
+	\item \textbf{ModifyBooking}.
+\end{itemize}
+
+\newpage
+
+\section{What to submit}
+
+\noindent Please submit your \texttt{pdf} file at the Electronic Assignment Submission portal
+
+\centerline{(\url{https://fis.encs.concordia.ca/eas}) }
+
+\noindent under \textbf{Theory Assignment 2}.
+
+\end{spacing}
+
+\end{document}
