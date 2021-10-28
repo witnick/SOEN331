@@ -144,7 +144,7 @@ in order to extend the interface to include a robust operation ModifyBooking.
 \upharpoonright (Book, Cancel) \\
 \begin{state}
 reserved : \mathcal{P} Person\\
-book : Person \pfun SeatType\\ % ARRANGE ARROW
+book : Person \rightarrowtail SeatType\\ % ARRANGE ARROW
 capacity : \mathbb{N}\\
 count : \mathbb{N} 
 \where
@@ -187,7 +187,7 @@ response! =~'Customer~Exists'
 ...\\
 \end{class}
 
-\begin{class}{Map}
+\begin{class}{Booking}
 ...\\
 \begin{op}{CustomerNotFound}
 customer? : Person\\
@@ -224,6 +224,28 @@ response!~=~'Ok!'
 Book~\hat{=}~(BookOk \wedge Success) \oplus CustomerExists \oplus (SeatUnavailable \vee FullyBooked)\\
 \ \\
 Cancel~\hat{=}~(CancelOk \wedge Success) \oplus (CustomerNotFound \vee TheaterEmpty)\\
+\end{class}
+
+\begin{class}{Booking2}
+\also
+\upharpoonright (Book, Cancel, GetNumberOfCustomers, ModifyBooking) \\
+Booking\\
+\begin{op}{GetNumberOfCustomers}
+numberOfCustomer! : \mathbb{N} 
+\ST
+numberOfCustomer! = count
+\end{op}\\
+\begin{op}{ModifyBookingOk}
+\Delta (book) \\
+customer? : Person\\
+seat? : SeatType
+\ST
+customer? \in reserved\\
+seat? \notin ran~book\\
+book' = book \oplus \{customer? \mapsto seat?\}
+\end{op}\\
+\ \\
+ModifyBooking~\hat{=}~(ModifyBookingOk \wedge Success) \oplus (CustomerNotFound \vee SeatUnavailable)\\
 \end{class}
 
 \newpage
