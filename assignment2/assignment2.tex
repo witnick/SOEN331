@@ -98,14 +98,14 @@ to produce robust specifications for the following interface:
 
 \begin{class}{TempMonitor}
 \also
-\upharpoonright (DeploySensor, ReadTemperature) \\
-\begin{state}
+deployedSensors~=~\mathcal{P}~SensorType\\
+deployedLocations?~=\mathcal{P}~LocationType\\
 map : SensorType \pfun LocationType\\
 temperatureRead : SensorType \pfun TemperatureType\\
 \where
 deployedSensors?~=~dom~map\\
 deployedLocations?~=~ran~map\\
-\end{state}
+deployedSensors?~=~dom~temperatureRead\\
 \end{class}
 \begin{class}{init}
 map = \emptyset\\
@@ -209,7 +209,7 @@ in order to extend the interface to include a robust operation ModifyBooking.
 \upharpoonright (Book, Cancel) \\
 \begin{state}
 reserved : \mathcal{P} Person\\
-book : Person \rightarrowtail SeatType\\ % ARRANGE ARROW
+book : Person \pfun SeatType\\ % ARRANGE ARROW
 capacity : \mathbb{N}\\
 count : \mathbb{N} 
 \where
