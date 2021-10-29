@@ -48,7 +48,7 @@ Department of Computer Science and Software Engineering\\
 \noindent \textbf{Weight}: 15\% of the overall grade.
 
 \section{Introduction}
-You should form a team of \textbf{three} members. Each team should designate a leader who will submit the assignment electronically. In case you cannot find a team, please contact me and I will assign you to one. There are \textbf{7} problems in this assignment, with a total weight of \textbf{100} points. You must prepare all your solutions in~\LaTeX~and produce a single \texttt{pdf} file. Name the file after the Concordia id of the person who will submit, e.g. \texttt{123456.pdf}.
+You should form a team of \textbf{three} members. Each team should designate a leader who will submit the assignment electronically. In case you cannot find a team, please contact me and I will assign you to one. There are \textbf{2} problems in this assignment, with a total weight of \textbf{100} points. You must prepare all your solutions in~\LaTeX~and produce a single \texttt{pdf} file. Name the file after the Concordia id of the person who will submit, e.g. \texttt{123456.pdf}.
 
 \section{Ground rules}
 
@@ -103,16 +103,16 @@ to produce robust specifications for the following interface:
 map : SensorType \pfun LocationType\\
 temperatureRead : SensorType \pfun TemperatureType\\
 \where
-deployedSensors?: dom~map\\
-deployedLocations?: ran~map\\
-%\forall d : dom~location \bullet employeeSalary(d) > 0.0
-\end{state} \\
-\begin{init}
+deployedSensors?~=~dom~map\\
+deployedLocations?~=~ran~map\\
+\end{state}
+\end{class}
+\begin{class}{init}
 map = \emptyset\\
 temperatureRead = \emptyset
-\end{init} \\
-\begin{op}{DeploySensorOK}
-\Delta (map) \\
+\end{class}
+\begin{class}{DeploySensorOK}
+\Delta (TempMonitor) \\
 newSensor? : SensorType\\
 location? : LocationType\\
 defaultTemperature?: TemperatureType
@@ -121,8 +121,9 @@ newSensor? \notin deployed\\
 location? \notin deployedLocations\\
 map' = map \cup \{ newSensor? \mapsto location? \}\\
 temperatureRead' = temperatureRead \cup \{ newSensor? \mapsto defaultTemperature? \}
-\end{op}\\
-\begin{op}{ReadTemperatureOK}
+\end{class}
+\begin{class}{ReadTemperatureOK}
+\Xi (TempMonitor) \\
 location? : LocationType\\
 sensorToRead? : SensorType\\
 temperature! : TemperatureType\\
@@ -130,42 +131,36 @@ temperature! : TemperatureType\\
 location? \in deployedLocations\\
 sensorToRead? = {location?} \triangleleft map\\
 temperature! = \{ sensorToRead? \} \triangleright  temperatureRead\\
-\end{op}\\
-...\\
 \end{class}
-\begin{class}{TempMonitor}
 ...\\
-\begin{op}{Success}
+\begin{class}{Success}
 response! : Message
 \ST
 response!~=~'Operation~Successful'
-\end{op}\\
-\begin{op}{AddLocationFail}
+\end{class}
+\begin{class}{AddLocationFail}
 location? : LocationType\\
 response! : Message
 \ST
 locations? \in deployedLocations\\
 response!~=~'location~already~exists'\\
-\end{op}\\
-\begin{op}{AddSensorFail}
+\end{class}
+\begin{class}{AddSensorFail}
 sensor? : SensorType\\
 response! : Message
 \ST
 sensor? \in deployedSensors\\
 response!~=~'sensor~already~exists'
-\end{op}\\
-\begin{op}{LocationUnknown}
+\end{class}
+\begin{class}{LocationUnknown}
 location? : LocationType\\
 response! : Message
 \ST
 location? \notin deployedLocations\\
 response!~=~'Location~unknown'
-\end{op}\\
-\ \\
-DeploySensor~\hat{=}~(~DeploySensorOK~\barwedge~Success)~\underline{\vee}~AddSensorFail~\underline{\vee}~AddLocationFail\\
-\ \\
-ReadTemperature~\hat{=} (~ReadTemperatureOK \barwedge Success)~\underline{\vee}~ LocationUnknown
 \end{class}
+$DeploySensor~\hat{=}~(~DeploySensorOK~\barwedge~Success)~\underline{\vee}~AddSensorFail~\underline{\vee}~AddLocationFail$\\
+$ReadTemperature~\hat{=} (~ReadTemperatureOK \barwedge Success)~\underline{\vee}~ LocationUnknown$
 \newpage
 \subsection{Part 2 (60 pts): A booking system with the Object Z specification}
 
