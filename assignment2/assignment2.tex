@@ -99,13 +99,13 @@ to produce robust specifications for the following interface:
 \begin{class}{TempMonitor}
 \also
 deployedSensors~=~\mathcal{P}~SensorType\\
-deployedLocations?~=\mathcal{P}~LocationType\\
+deployedLocations~=\mathcal{P}~LocationType\\
 map : SensorType \pfun LocationType\\
 temperatureRead : SensorType \pfun TemperatureType\\
 \where
-deployedSensors?~=~dom~map\\
-deployedLocations?~=~ran~map\\
-deployedSensors?~=~dom~temperatureRead\\
+deployedSensors~=~dom~map\\
+deployedLocations~=~ran~map\\
+deployedSensors~=~dom~temperatureRead\\
 \end{class}
 \begin{class}{init}
 map = \emptyset\\
