@@ -96,6 +96,77 @@ to produce robust specifications for the following interface:
 
 \newpage
 
+\begin{class}{TempMonitor}
+\also
+\upharpoonright (DeploySensor, ReadTemperature) \\
+\begin{state}
+map : SensorType \pfun LocationType\\
+temperatureRead : SensorType \pfun TemperatureType\\
+\where
+deployedSensors?: dom~map\\
+deployedLocations?: ran~map\\
+%\forall d : dom~location \bullet employeeSalary(d) > 0.0
+\end{state} \\
+\begin{init}
+map = \emptyset\\
+temperatureRead = \emptyset
+\end{init} \\
+\begin{op}{DeploySensorOK}
+\Delta (map) \\
+newSensor? : SensorType\\
+location? : LocationType\\
+defaultTemperature?: TemperatureType
+\ST
+newSensor? \notin deployed\\
+location? \notin deployedLocations\\
+map' = map \cup \{ newSensor? \mapsto location? \}\\
+temperatureRead' = temperatureRead \cup \{ newSensor? \mapsto defaultTemperature? \}
+\end{op}\\
+\begin{op}{ReadTemperatureOK}
+location? : LocationType\\
+sensorToRead? : SensorType\\
+temperature! : TemperatureType\\
+\ST
+location? \in deployedLocations\\
+sensorToRead? = {location?} \triangleleft map\\
+temperature! = \{ sensorToRead? \} \triangleright  temperatureRead\\
+\end{op}\\
+...\\
+\end{class}
+\begin{class}{TempMonitor}
+...\\
+\begin{op}{Success}
+response! : Message
+\ST
+response!~=~'Operation~Successful'
+\end{op}\\
+\begin{op}{AddLocationFail}
+location? : LocationType\\
+response! : Message
+\ST
+locations? \in deployedLocations\\
+response!~=~'location~already~exists'\\
+\end{op}\\
+\begin{op}{AddSensorFail}
+sensor? : SensorType\\
+response! : Message
+\ST
+sensor? \in deployedSensors\\
+response!~=~'sensor~already~exists'
+\end{op}\\
+\begin{op}{LocationUnknown}
+location? : LocationType\\
+response! : Message
+\ST
+location? \notin deployedLocations\\
+response!~=~'Location~unknown'
+\end{op}\\
+\ \\
+DeploySensor~\hat{=}~(~DeploySensorOK~\barwedge~Success)~\underline{\vee}~AddSensorFail~\underline{\vee}~AddLocationFail\\
+\ \\
+ReadTemperature~\hat{=} (~ReadTemperatureOK \barwedge Success)~\underline{\vee}~ LocationUnknown
+\end{class}
+\newpage
 \subsection{Part 2 (60 pts): A booking system with the Object Z specification}
 
 \noindent We introduce the basic types [Person, SeatType]. We also introduce an enumerated type\\
@@ -103,8 +174,7 @@ Message which will assume values (feel free to define your own) that correspond 
 and error messages. Consider a system to book seats for a theater play. A customer can\\
 book a single seat, and a seat can only accommodate a single customer. The booking system\\
 keeps a log of the customers that have booked a seat. The system publishes a plan of the\\
-theater and it allows customers to access it online and make a booking or cancel a booking.
-
+theater and it allows customers to access it online and make a booking or cancel a booking.\\
 \subsubsection{Class Booking}
 \noindent Define a formal specification in Object-Z for class Bookingt to support the following operations:
 \begin{itemize}
