@@ -207,6 +207,119 @@ in order to extend the interface to include a robust operation ModifyBooking.
 
 \newpage
 
+\section{Object Z}
+
+\begin{class}{Booking}
+\also
+\upharpoonright (Book, Cancel) \\
+\begin{state}
+reserved : \mathcal{P} Person\\
+book : Person \rightarrowtail SeatType\\ % ARRANGE ARROW
+capacity : \mathbb{N}\\
+count : \mathbb{N} 
+\where
+reserved = dom~book\\ 
+capacity > 0\\
+count \geq 0
+\end{state} \\
+\begin{init}
+book = \emptyset\\
+capacity = \mathbb{N}\\
+count = 0
+\end{init} \\
+\begin{op}{BookOk}
+\Delta (book, count) \\
+customer? : Person\\
+seat? : SeatType
+\ST
+customer? \notin reserved\\
+seat? \notin ran~book\\
+count < capacity\\
+book' = book \cup \{ customer? \mapsto seat? \}\\
+count' = count+1
+\end{op}\\
+\begin{op}{CancelOk}
+\Delta (book, count) \\
+customer? : Person
+\ST
+customer? \in reserved\\
+count > 0\\
+book' = \{ customer? \} \ndres book\\
+count' = count-1
+\end{op}\\
+\begin{op}{CustomerExists}
+customer? : Person\\
+response! : Message
+\ST
+customer? \in reserved\\
+response! =~'Customer~Exists'
+\end{op}\\
+...\\
+\end{class}
+
+\begin{class}{Booking}
+...\\
+\begin{op}{CustomerNotFound}
+customer? : Person\\
+response! : Message
+\ST
+customer? \notin reserved\\
+response! =~'Customer~Not~Found'
+\end{op}\\
+\begin{op}{SeatUnavailable}
+seat? : SeatType\\
+response! : Message
+\ST
+seat? \in ran~book\\
+response!~=~'Seat~Is~Already~Taken'
+\end{op}\\
+\begin{op}{TheaterEmpty}
+response! : Message
+\ST
+count = 0\\
+response!~=~'Room~Is~Empty'
+\end{op}\\
+\begin{op}{FullyBooked}
+response! : Message
+\ST
+count = capacity\\
+response!~=~'Room~is~Full'
+\end{op}\\
+\begin{op}{Success}
+response! : Message
+\ST
+response!~=~'Ok!'
+\end{op}\\
+\ \\
+Book~\hat{=}~(BookOk \wedge Success) \oplus CustomerExists \oplus (SeatUnavailable \vee FullyBooked)\\
+\ \\
+Cancel~\hat{=}~(CancelOk \wedge Success) \oplus (CustomerNotFound \vee TheaterEmpty)\\
+\end{class}
+
+\begin{class}{Booking2}
+\also
+\upharpoonright (Book, Cancel, GetNumberOfCustomers, ModifyBooking) \\
+Booking\\
+\begin{op}{GetNumberOfCustomers}
+numberOfCustomer! : \mathbb{N} 
+\ST
+numberOfCustomer! = count
+\end{op}\\
+\begin{op}{ModifyBookingOk}
+\Delta (book) \\
+customer? : Person\\
+seat? : SeatType
+\ST
+customer? \in reserved\\
+seat? \notin ran~book\\
+book' = book \oplus \{customer? \mapsto seat?\}
+\end{op}\\
+\ \\
+ModifyBooking~\hat{=}~(ModifyBookingOk \wedge Success) \oplus (CustomerNotFound \vee SeatUnavailable)\\
+\end{class}
+
+\newpage
+
 \section{What to submit}
 
 \noindent Please submit your \texttt{pdf} file at the Electronic Assignment Submission portal
