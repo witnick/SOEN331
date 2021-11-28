@@ -15,6 +15,7 @@
 \usepackage{fancyvrb}
 \usepackage{epstopdf}
 \usepackage{soul}
+\graphicspath{ {./figures/} }
 
 \title{Concordia University\\
 Department of Computer Science and Software Engineering\\
@@ -38,52 +39,20 @@ Department of Computer Science and Software Engineering\\
 
 \section{Problem 1 (46 pts): Analyzing program behavior}
 
-\[
-\Box	\begin{bmatrix}
-
-		1.~~   \textbf{start} \rightarrow \neg a \vee \neg b  \\
-\ \\
-      	2.~~   \textbf{start} \rightarrow c\\
-\ \\    
-      	3.~~   b \wedge c \rightarrow \bigcirc^{2} (d \oplus e)\\
-\ \\    
-      	4.~~   a \vee c \rightarrow \bigcirc (k~\mathcal{R}~g)\\
-\ \\    
-      	5.~~   (d \vee e) \rightarrow \bigcirc^{2} k\\
-\ \\    
-      	6.~~   c \rightarrow (h ~\mathcal{W}~ (e \wedge g))\\
-\ \\    
-      	7.~~   (d \wedge g \wedge h) \rightarrow \bigcirc^{3} m\\
-\ \\
-		8.~~   d \rightarrow m~\mathcal{R}~h \\
-\ \\
-		9.~~   e \wedge \bigcirc^{2} (k \wedge g) \rightarrow \bigcirc^{2}m \\
-\ \\
-		10.~~  (e \wedge g) \rightarrow \bigcirc^{3} c\\
-\ \\
-		11.~~  k \wedge m \rightarrow \bigcirc h\\
-\ \\
-		12.~~  (e \wedge \bigcirc^{2}k) \rightarrow \bigcirc^{3}b \\
-					
-		\end{bmatrix}
-\]
+\includegraphics{p1-model.png}
 
 \begin{enumerate}
 
 	\item (36 pts) Visualize all models of behavior.
 
-	
-	\noindent ...
-
 	\item (10 pts) Specify conditions (models of behavior), if any exist, under which the program\
 	can terminate. If none exist, please indicate so.
 		
-	\noindent ...
-		
-				
-	
 \end{enumerate}
 
+\begin{figure}[ht]
+\includegraphics[scale=0.725]{p1.png}
+\end{figure}
 \newpage
 
 \section{Problem 2 (54 pts) \\Interpreting and visualizing temporal expressionsogram behavior}
